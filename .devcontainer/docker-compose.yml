@@ -1,0 +1,11 @@
+services:
+  dev:
+    build:
+      context: ..  # Make the entire project folder visible to docker compose
+      dockerfile: .devcontainer/Dockerfile
+    volumes:
+      - ..:/workspace
+    command: 
+      - sh -c "chmod -R 777 /workspace && tail -f /dev/null" # Set permissions on the working directory for root user
+    ports:
+      - "8501:8501"   # Streamlit default port
